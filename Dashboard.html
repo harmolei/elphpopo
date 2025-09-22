@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomeBound Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Baloo+2:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #fffbea; /* soft warm background */
+      font-family: "Poppins", Arial, sans-serif;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #ffccaa, #ffd6ba);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-family: "Fredoka One", cursive;
+      font-size: 28px;
+      color: #d94a4a !important;
+      text-shadow: 1px 1px #fff;
+    }
+    .offcanvas {
+      background: #ffe8c7;
+      font-family: "Baloo 2", cursive;
+    }
+    .offcanvas h5 {
+      color: #f27b7b;
+      font-weight: 600;
+    }
+    .offcanvas a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .offcanvas a:hover {
+      background: #ff9c9c;
+      color: #fff;
+      transform: translateX(5px);
+    }
+    h2, h4, h5, .card-header {
+      font-family: "Baloo 2", cursive;
+    }
+    .dashboard-stats {
+      margin: 20px 0;
+    }
+    .stat-card {
+      border: none;
+      border-radius: 15px;
+      padding: 20px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+      font-family: "Poppins", sans-serif;
+    }
+    .stat-card:hover {
+      transform: scale(1.05);
+    }
+    .stat-icon {
+      font-size: 32px;
+      opacity: 0.9;
+    }
+    .stat1 { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+    .stat2 { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+    .stat3 { background: linear-gradient(135deg, #fddb92, #d1fdff); color:#444; }
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+      font-family: "Poppins", sans-serif;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card-header {
+      background: #ffccaa;
+      font-weight: bold;
+      color: #c34c4c;
+      border-radius: 15px 15px 0 0 !important;
+      font-family: "Baloo 2", cursive;
+    }
+    .property-card img {
+      border-radius: 12px 12px 0 0;
+      height: 160px;
+      object-fit: cover;
+    }
+    .footer {
+      text-align: center;
+      font-family: "Fredoka One", cursive;
+      font-size: 22px;
+      color: #f27b7b;
+      margin-top: 30px;
+      padding: 10px;
+    }
+
+     body.dark-mode {
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      color: #f1f1f1;
+    }
+    body.dark-mode .dashboard-container {
+      background: #333;
+      color: #f1f1f1;
+    }
+    body.dark-mode .dashboard-title {
+      color: #ffb347;
+    }
+    body.dark-mode .form-label {
+      color: #f1f1f1;
+    }
+    body.dark-mode .form-control {
+      background: #444;
+      border: 1px solid #666;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light px-3">
+  <!-- Hamburger -->
+  <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand ms-2" href="#">
+    <img src="images/Logo1.png" alt="Logo" style="height:40px; margin-right:10px;">
+    HOMEBOUND
+  </a>
+</nav>
+
+<!-- Sidebar Offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Navigation</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a href="#">🏠 Dashboard</a>
+    <a href="PropertyListings.html">🏡 Property Listings</a>
+    <a href="MapSearch.html">📍 Map Search</a>
+    <a href="#">💬 Messages</a>
+    <a href="#">👤 Profile</a>
+    <a href="SettingsPage.html">⚙️ Settings</a>
+    <a href="HomeBound.html">🚪 Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container-fluid p-4">
+  <h2 class="mb-4" style="color:#f27b7b;">Welcome to HomeBound Dashboard</h2>
+
+  <!-- Dashboard Statistics -->
+  <div class="row dashboard-stats">
+    <div class="col-md-4">
+      <div class="stat-card stat1">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h4>120</h4>
+            <p>Active Listings</p>
+          </div>
+          <div class="stat-icon">🏡</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card stat2">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h4>45</h4>
+            <p>Messages</p>
+          </div>
+          <div class="stat-icon">💬</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card stat3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h4>15</h4>
+            <p>Pending Approvals</p>
+          </div>
+          <div class="stat-icon">📝</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roles -->
+  <div class="row">
+    <!-- Buyer/Guest Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Guest / Buyer</div>
+        <div class="card-body">
+          <ul>
+            <li>Browse property listings</li>
+            <li>Filter or search via map</li>
+            <li>View property details</li>
+            <li>Register/Login to contact seller</li>
+            <li>Send inquiry via chat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Owner/Agent Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Owner / Agent</div>
+        <div class="card-body">
+          <ul>
+            <li>Register/Login</li>
+            <li>Post new property with photos/videos</li>
+            <li>Wait for admin approval</li>
+            <li>Receive inquiries</li>
+            <li>Respond via chat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">Admin</div>
+        <div class="card-body">
+          <ul>
+            <li>Review and approve listings</li>
+            <li>Manage users</li>
+            <li>Monitor community content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Showcase -->
+  <h4 class="mt-5 mb-3" style="color:#c34c4c;">Featured Properties</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card property-card">
+        <img src="https://via.placeholder.com/400x200?text=House+1" alt="Property">
+        <div class="card-body">
+          <h5>Cozy Family Home</h5>
+          <p>₱2,500,000 • 3BR • Quezon City</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card property-card">
+        <img src="https://via.placeholder.com/400x200?text=House+2" alt="Property">
+        <div class="card-body">
+          <h5>Modern Condo Unit</h5>
+          <p>₱1,800,000 • 2BR • Makati</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card property-card">
+        <img src="https://via.placeholder.com/400x200?text=House+3" alt="Property">
+        <div class="card-body">
+          <h5>Beachfront Villa</h5>
+          <p>₱12,000,000 • 4BR • Batangas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const darkSwitch = document.getElementById("darkMode");
+  if(localStorage.getItem("darkMode") === "enabled"){
+    document.body.classList.add("dark-mode");
+    darkSwitch.checked = true;
+  }
+  darkSwitch.addEventListener("change", () => {
+    if(darkSwitch.checked){
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode","enabled");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode","disabled");
+    }
+  });
+</script>
+
+  <!-- Footer -->
+  <div class="footer">
+    Bound into your new Home 🏡
+  </div>
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

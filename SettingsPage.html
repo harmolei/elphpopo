@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomeBound Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Baloo+2:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe8c7, #ffd6ba);
+      font-family: "Poppins", sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+    .settings-container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: #fffbea;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: background 0.5s, color 0.5s;
+    }
+    .settings-title {
+      font-family: "Fredoka One", cursive;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #f27b7b;
+    }
+    .form-label {
+      font-family: "Baloo 2", cursive;
+      font-size: 18px;
+    }
+    .form-control {
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .btn-save {
+      background: #f27b7b;
+      border: none;
+      border-radius: 12px;
+      font-family: "Baloo 2", cursive;
+      font-size: 18px;
+      color: white;
+      width: 100%;
+      padding: 10px;
+      transition: 0.3s;
+    }
+    .btn-save:hover {
+      background: #d94a4a;
+      transform: scale(1.05);
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      color: #f1f1f1;
+    }
+    body.dark-mode .settings-container {
+      background: #333;
+      color: #f1f1f1;
+    }
+    body.dark-mode .settings-title {
+      color: #ffb347;
+    }
+    body.dark-mode .form-label {
+      color: #f1f1f1;
+    }
+    body.dark-mode .form-control {
+      background: #444;
+      border: 1px solid #666;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <h2 class="settings-title">⚙️ Settings</h2>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Change Email</label>
+        <input type="email" class="form-control" placeholder="Enter new email">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Change Password</label>
+        <input type="password" class="form-control" placeholder="Enter new password">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Notification Preferences</label>
+        <select class="form-control">
+          <option>Email Only</option>
+          <option>SMS Only</option>
+          <option>Email & SMS</option>
+          <option>None</option>
+        </select>
+      </div>
+      <div class="mb-3 form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="darkMode">
+        <label class="form-check-label" for="darkMode">🌙 Dark Mode</label>
+      </div>
+      <button type="button" class="btn-save" onclick="window.location.href='dashboard.html'">
+        Save Changes
+      </button>
+    </form>
+  </div>
+
+<script>
+  const darkSwitch = document.getElementById("darkMode");
+
+  // Apply saved preference on load
+  if(localStorage.getItem("darkMode") === "enabled"){
+    document.body.classList.add("dark-mode");
+    darkSwitch.checked = true;
+  }
+
+  // Save preference when toggled
+  darkSwitch.addEventListener("change", () => {
+    if(darkSwitch.checked){
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode","enabled");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode","disabled");
+    }
+  });
+</script>
+</body>
+</html>
